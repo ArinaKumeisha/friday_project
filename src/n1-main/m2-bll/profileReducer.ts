@@ -53,7 +53,6 @@ export const updateAuthTC = ( name: any, avatar: any) => {
     return (dispatch: Dispatch)=>{
         authAPI.putAuthMe(name,avatar  ).then(res =>{
             dispatch(updateUserDataAC( res.data.name, res.data.avatar ))
-            /*dispatch(setProfile(res.data))*/
         })
     }
 }

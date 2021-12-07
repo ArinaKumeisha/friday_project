@@ -9,7 +9,8 @@ const initialState: InitialStateType = {
     page: 1,
     cardsTotalCount: 20,
     grade: 3,
-    card_id: ''
+    card_id: '',
+    error: '',
 }
 
 export const cardsReducer = (state = initialState, action: ActionType): InitialStateType => {
@@ -24,6 +25,8 @@ export const cardsReducer = (state = initialState, action: ActionType): InitialS
             return {...state, pageCount: action.pageCount}
         case "CARDS/SET-CARDS-GRADE":
             return {...state, cards: state.cards.map(c => c._id === action.card_id ? {...c , grade: action.grade } : c)}
+     /*   case "CARDS/SET-ERROR":
+            return {...state, error: action.error}*/
         default:
             return state
     }
@@ -36,7 +39,10 @@ type InitialStateType = {
     cardsTotalCount: number
     grade: number
     card_id: string
+    error: string
 }
+export const setErrorAC = (error: string) =>
+    ({type: 'CARDS/SET-ERROR', error}as const)
 
 export const setCardsGradeAC = (card_id: string, grade: number) =>
     ({type: 'CARDS/SET-CARDS-GRADE', card_id, grade} as const)
@@ -49,6 +55,7 @@ export const setTotalCountCardsAC = (cardsTotalCount: number) =>
     ({type: 'CARDS/SET-TOTAL-COUNT-CARDS', cardsTotalCount,} as const)
 export const setPageCountCardsAC = (pageCount: number) =>
     ({type: 'CARDS/SET-PAGE-COUNT-CARDS', pageCount,} as const)
+
 
 export const getCardsTC = (): AppThunk => {
     return (dispatch, getState: () => AppStoreType) => {
@@ -64,7 +71,8 @@ export const getCardsTC = (): AppThunk => {
                 dispatch(setTotalCountCardsAC(res.data.cardsTotalCount))
             })
             .catch(res => {
-                console.log('getCardsTC catch:', res.response.data.error)
+                const errorMessage = res.response ? res.response.data.error : 'Some error'
+               /* dispatch(setErrorAC(errorMessage))*/
             })
     }
 }
@@ -79,7 +87,8 @@ export const addCardTC = (question: string, answer: string): AppThunk => {
                 dispatch(getCardsTC())
             })
             .catch(res => {
-                console.log('addCardTC catch:', res.response.data.error)
+                const errorMessage = res.response ? res.response.data.error : 'Some error'
+               /* dispatch(setErrorAC(errorMessage))*/
             })
     }
 }
@@ -93,7 +102,8 @@ export const updateCardTC = (cardId: string, newQuestion: string, newAnswer: str
 
             })
             .catch(res => {
-                console.log('updateCardTC catch:', res.response.data.error)
+                const errorMessage = res.response ? res.response.data.error : 'Some error'
+                /*dispatch(setErrorAC(errorMessage))*/
             })
     }
 }
@@ -103,10 +113,10 @@ export const deleteCardTC = (cardId: string): AppThunk => {
         cardsAPI.deleteCard(cardId)
             .then(res => {
                 dispatch(getCardsTC())
-                console.log('deleteCardTC then:', res)
             })
             .catch(res => {
-                console.log('deleteCardTC catch:', res.response.data.error)
+                const errorMessage = res.response ? res.response.data.error : 'Some error'
+               /* dispatch(setErrorAC(errorMessage))*/
             })
     }
 }
@@ -118,7 +128,8 @@ export const setCardsGrade = (cardId: string, grade: number) => {
                dispatch(setCardsGradeAC(res.data.card_id, res.data.grade))
             })
             .catch(res =>{
-                console.log(res.response.data.error)
+                const errorMessage = res.response ? res.response.data.error : 'Some error'
+               /* dispatch(setErrorAC(errorMessage))*/
             })
     }
 }
@@ -129,5 +140,7 @@ type ActionType =
     | ReturnType<typeof setTotalCountCardsAC>
     | ReturnType<typeof setPageCountCardsAC>
     | ReturnType<typeof setCardsGradeAC>
+    | ReturnType<typeof setErrorAC>
+
 
 type AppThunk = ThunkAction<void, AppStoreType, unknown, ActionType>
