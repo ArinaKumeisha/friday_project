@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {useDispatch} from "react-redux";
-import style from './Pagination.module.css'
+import style from './Pagination.module.scss'
 import SuperButton from '../../../n1-main/m1-ui/common/c2-SuperButton/SuperButton';
 import {setCurrentPageCardsAC} from "../../../n1-main/m2-bll/cards-reducer";
 import Select from "../Select/Select";

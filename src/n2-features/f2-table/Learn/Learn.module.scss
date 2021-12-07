@@ -5,9 +5,10 @@
   margin: 30px auto;
   border: 2px solid $primaryColor;
   width: 50%;
-  min-height: 200px;
+  min-height: 250px;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   align-items: center;
   padding: 10px 10px 0 10px;
 

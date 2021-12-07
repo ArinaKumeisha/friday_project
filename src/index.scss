@@ -4,6 +4,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+
   &::selection {
     color: white;
     background: $primaryColor;
@@ -13,19 +14,23 @@
 body {
   margin: 0;
   font-family: $textFontFamily;
+  background-color: #eae5ec;
+  color: #492f63;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  monospace;
 }
 
 h1 {
   font-size: 25px;
 }
+
 h2 {
   font-size: 20px;
 }
+
 hr {
   border: 1px solid $primaryColor;
   margin-top: 5px;

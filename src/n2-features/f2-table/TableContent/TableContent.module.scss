@@ -30,6 +30,10 @@
             display: flex;
             justify-content: space-between;
             width: 100%;
+            .elem{
+                text-decoration: none;
+                color: black;
+            }
 
             div {
                 width: 200px;

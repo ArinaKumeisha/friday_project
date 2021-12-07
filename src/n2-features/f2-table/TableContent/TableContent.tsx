@@ -24,7 +24,7 @@ export const TableContent: React.FC<PropsType> = (props) => {
                     let cardPackId = e.id
                     return <div className={s.bodyModel} key={e.id}>{
                         e.element.map((e, index) => {
-                            return <div key={cardPackId + index}>{e}</div>
+                            return <div  key={cardPackId + index}>{e}</div>
                         })
                     }</div>
                 })

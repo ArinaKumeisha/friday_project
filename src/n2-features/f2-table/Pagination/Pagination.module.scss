@@ -1,0 +1,27 @@
+@import "src/n1-main/m1-ui/common/components/sass/variables";
+.pagination {
+    display: flex;
+    padding: 10px;
+    justify-content: center;
+    .btn {
+        width: 50px;
+        height: 30px;
+        margin: 10px;
+
+    }
+    .select {
+        font-weight: bold;
+    }
+
+    .item {
+        height: 30px;
+        width: 30px;
+        margin: 10px;
+        background-color: $paginationColor;
+        text-align: center;
+        cursor: pointer;
+    }
+}
+
+
+

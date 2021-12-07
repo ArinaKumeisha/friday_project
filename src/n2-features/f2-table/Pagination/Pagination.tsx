@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {AppStoreType} from "../../../n1-main/m2-bll/store";
-import style from './Pagination.module.css'
+import style from './Pagination.module.scss'
 import {getCardsPackTC, setCurrentPageAC} from "../../../n1-main/m2-bll/cardsPack-reducer";
 import SuperButton from '../../../n1-main/m1-ui/common/c2-SuperButton/SuperButton';
 

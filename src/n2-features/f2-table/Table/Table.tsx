@@ -7,7 +7,7 @@ import {
     setCardsCountAC,
     setPageCountAC,
     setSearchPackNameAC,
-    setUserIdAfterRadioAC
+    setUserIdAfterRadioAC, SortPackType
 } from "../../../n1-main/m2-bll/cardsPack-reducer";
 import {AppStoreType} from "../../../n1-main/m2-bll/store";
 import SuperButton from "../../../n1-main/m1-ui/common/c2-SuperButton/SuperButton";
@@ -40,6 +40,7 @@ export const Table = () => {
     const page = useSelector<AppStoreType, number>(state => state.table.page)
     const superRadioArr = ['Profile', 'Public']  // for SuperRadio in Settings
     const cardsPacks = useSelector<AppStoreType, Array<CardsPackType>>(state => state.table.cardPacks)
+    const sortPacks = useSelector<AppStoreType, SortPackType>(state => state.table.sortPacks)
 
     const [profileOrPublic, onChangeProfileOrPublic] = useState(superRadioArr[0]) // for SuperRadio is Settings
     const [searchTerm, setSearchTerm] = useState('');
@@ -57,7 +58,7 @@ export const Table = () => {
         dispatch(setCardsCountAC(debouncedRange[0], debouncedRange[1]))
         dispatch(getCardsPackTC())
 
-    }, [profileOrPublic, pageCount, page, debouncedSearchTerm, debouncedRange[0], debouncedRange[1]])
+    }, [profileOrPublic, pageCount, page,sortPacks, debouncedSearchTerm, debouncedRange[0], debouncedRange[1]])
 
     const setPageCountHandler = (e: ChangeEvent<HTMLInputElement>) => {
         if (Number(e.currentTarget.value) < 1) e.currentTarget.value = '1'
@@ -97,13 +98,13 @@ export const Table = () => {
                     ? <div>
                         <SuperButton className={s.button} onClick={() => delCardsPackHandler(e._id)}>del</SuperButton>
                         <SuperButton className={s.button} onClick={() => updateCardsPackHandler(e._id)}>update</SuperButton>
-                        <NavLink className={s.item} exact to={`/learn/${e._id}`}> <SuperButton
-                            className={s.button}>Learn</SuperButton>
-                        </NavLink>
+                            <NavLink className={s.item} exact to={`/learn/${e._id}`}>
+                              <SuperButton
+                            className={s.button} >Learn</SuperButton></NavLink> :
                     </div>
                     : <div>
                         <NavLink className={s.item} exact to={`/learn/${e._id}`}> <SuperButton
-                            className={s.button}>Learn</SuperButton>
+                            className={s.button} >Learn</SuperButton>
                         </NavLink>
                     </div>,
             ]

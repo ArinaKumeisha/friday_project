@@ -26,8 +26,8 @@
 }
 
 .default {
-    background-color: $primaryColor;
-    border-color: $primaryColor;
+    background-color: $accentColor;
+    border-color: $accentColor;
     color: #212529;
     &:hover {
         background-color: $accentColor;

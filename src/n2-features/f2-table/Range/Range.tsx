@@ -1,6 +1,6 @@
 import React from 'react';
 import {getTrackBackground, Range} from 'react-range';
-import style from './Range.module.css'
+import style from './Range.module.scss'
 
 type  PropsType = {
     values: number[]
@@ -32,7 +32,7 @@ const PriceRange: React.FC<PropsType> =props=> {
                             borderRadius: '4px',
                             background: getTrackBackground({
                                 values: values,
-                                colors: ['#ccc', 'yellow', '#ccc'],
+                                colors: ['#ccc', '#e6baf4', '#ccc'],
                                 min: 0,
                                 max: 100,
                             }),
@@ -55,7 +55,7 @@ const PriceRange: React.FC<PropsType> =props=> {
                     <div style={{
                             height: '16px',
                             width: '5px',
-                            backgroundColor: isDragged ? '#fbbf62' : '#CCC'}}/>
+                            backgroundColor: isDragged ? '#a650c1' : '#CCC'}}/>
                 </div>)}
         />
         </div>
