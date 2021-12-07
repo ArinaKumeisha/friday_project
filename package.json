@@ -1,5 +1,6 @@
 {
-  "name": "friday-project",
+  "name": "friday_project",
+  "homepage": "https://ArinaKumeisha.github.io/friday_project",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
