@@ -1,28 +1,28 @@
-
 @import "./src/n1-main/m1-ui/common/components/sass/variables";
-
 
 .profileContainer {
   margin: 50px;
   display: flex;
   justify-content: center;
-  width: 500px;
-  height: 600px;
-  background-color: $profileColor;
-  border-radius: 50px;
+  align-items: center;
+
+
   .profile {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    height: 400px;
+    width: 400px;
+    background-color: $profileColor;
+    border-radius: 50px;
   }
+
   img {
     border-radius: 100%;
     margin: 20px;
     height: 200px;
     width: 200px;
   }
-  span {
-    font-size: 20px;
-    font-weight: bold
-  }
+
 
 }

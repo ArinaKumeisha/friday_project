@@ -4,12 +4,12 @@ import {useDispatch} from "react-redux";
 import style from './Select.module.scss'
 
 type PropsType = {
-    pageCountCards: number
+    count: number
 }
 const Select =(props: PropsType) => {
-    const {pageCountCards} = props
+    const {count} = props
     const dispatch = useDispatch()
-    const [state, setState] = useState<number>(pageCountCards)
+    const [state, setState] = useState<number>(count)
 
     const onClickHandler = () =>{
         dispatch(setPageCountCardsAC(state))

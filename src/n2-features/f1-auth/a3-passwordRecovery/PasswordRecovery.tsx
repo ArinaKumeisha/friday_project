@@ -26,17 +26,25 @@ export const PasswordRecovery = () => {
     }
 
     return (
-        <div className={s.passwordRecovery}>
-            <h1>This page will recover you password.</h1>
-            <p className={s.element}>Please enter you email to input bellow and click recover.</p>
-            <div className={s.element}>
-                <label>
-                    Your email:
-                    <SuperInputText value={email} onChangeText={setEmail} className={s.input}/>
-                </label>
+        <div className={s.container}>
+            <div className={s.passwordRecovery}>
+                <h1>Please enter you email and click recover.</h1>
+                <div> Your email:</div>
+
+                <SuperInputText
+                    value={email}
+                    onChangeText={setEmail}
+                    className={s.input}/>
+
+                <SuperButton
+                    onClick={onClickHandler}>
+                    Recover
+                </SuperButton>
+
+                <div className={classColor}>
+                    {statusText}
+                </div>
             </div>
-            <div className={s.element}><SuperButton onClick={onClickHandler} >Recover</SuperButton></div>
-            <div className={classColor}>{statusText}</div>
         </div>
 
     );

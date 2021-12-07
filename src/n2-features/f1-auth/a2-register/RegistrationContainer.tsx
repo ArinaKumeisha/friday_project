@@ -1,9 +1,10 @@
-import React, {useState} from 'react';
+import React, {FormEvent, useState} from 'react';
 import {registrationTC, setErrorMessageAC} from "../../../n1-main/m2-bll/registrationReducer";
 import {useDispatch, useSelector} from "react-redux";
 import {Registration} from "./Registration";
 import {AppStoreType} from "../../../n1-main/m2-bll/store";
 import {Redirect} from "react-router-dom";
+import {LoginTC} from "../../../n1-main/m2-bll/authReducer";
 
 export const RegistrationContainer = () => {
     const [email, setEmail] = useState('')
@@ -12,8 +13,8 @@ export const RegistrationContainer = () => {
 
     const dispatch = useDispatch()
     const isRegistered = useSelector<AppStoreType, boolean>(state => state.registration.isRegistered)
-
-    const register = () => {
+    const register = (e: FormEvent<HTMLFormElement>) => {
+        e.preventDefault()
         dispatch(setErrorMessageAC(null))
         if (password === repeatPassword) {
             dispatch(registrationTC(email, password))

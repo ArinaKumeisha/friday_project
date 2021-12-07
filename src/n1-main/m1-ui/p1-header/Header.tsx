@@ -1,5 +1,5 @@
 import React from 'react';
-import {NavLink} from "react-router-dom";
+import {NavLink, Redirect} from "react-router-dom";
 import s from './Header.module.scss'
 import {useDispatch, useSelector} from "react-redux";
 import {LogoutTC} from "../../m2-bll/authReducer";
@@ -11,7 +11,9 @@ export const Header = () => {
     const logout = () => {
         dispatch(LogoutTC())
     }
-
+    if (!isLoggedIn) {
+        return <Redirect to='/login'/>
+    }
     return (
         <div className={s.header}>
             <NavLink to={'/profile'}>

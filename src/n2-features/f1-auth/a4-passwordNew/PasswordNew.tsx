@@ -39,28 +39,34 @@ export const PasswordNew = () => {
     }
 
     return (
+        <div className={s.container}>
         <div className={s.passwordNew}>
             <h1>This page for changing you password.</h1>
-            <p className={s.element}>It will take token from address link and new password from inputs and then new
-                password will be set to you.</p>
-            <div className={s.element}>
-                <label className={s.oneSizeEl}>
-                    <div>New password:</div>
-                    <SuperInputText value={newPassword} onChangeText={setNewPassword} type={'password'}
-                                    className={s.input}/>
-                </label>
-            </div>
-            <div className={s.element}>
-                <label className={s.oneSizeEl}>
-                    <div>Password confirmation:</div>
-                    <SuperInputText value={newPassword2} onChangeText={setNewPassword2} type={'password'}
-                                    className={s.input}/>
-                </label>
-            </div>
-            <div className={s.element}><SuperButton onClick={onClickHandler} className={s.button}>Change
-                password</SuperButton></div>
+
+            <div>New password:</div>
+            <SuperInputText
+                value={newPassword}
+                onChangeText={setNewPassword}
+                type={'password'}
+                className={s.input}/>
+
+
+            <div>Repeat password:</div>
+            <SuperInputText
+                value={newPassword2}
+                onChangeText={setNewPassword2}
+                type={'password'}
+                className={s.input}/>
+
+            <SuperButton
+                onClick={onClickHandler}
+                className={s.button}>
+                Change password
+            </SuperButton>
+
             <div className={s.red}>{matchStatus}</div>
             <div className={classColor}>{statusText}</div>
+        </div>
         </div>
     )
 }

@@ -1,28 +1,33 @@
+@import './src/n1-main/m1-ui/common/components/sass/variables';
+@import './src/n1-main/m1-ui/common/components/sass/mixins';
 
 .form {
   margin: 100px 0;
   display: flex;
   justify-content: center;
   align-items: center;
-
   left: 60px;
-  div {
-    padding: 5px;
-    button {
-      display: block;
-      margin: 0 auto;
+
+
+  .border {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 50px;
+    @include form($colorForm, 400px, 400px,);
+
+    a {
+      text-decoration: none;
+      color: #590482;
+      font-weight: bold;
+
+    }
+
+    .text {
+      text-align: center;
+      font-size: 30px;
     }
   }
-  span {
-    text-align: center;
-    padding: 5px;
-
-  }
-}
-.border {
-  border: 2px solid black;
-}
-.text {
-  text-align: center;
-  font-size: 30px;
 }

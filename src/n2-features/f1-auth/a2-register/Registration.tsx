@@ -1,4 +1,4 @@
-import React, {ChangeEvent} from 'react';
+import React, {ChangeEvent, FormEvent} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {AppStoreType} from '../../../n1-main/m2-bll/store'
 import SuperInputText from "../../../n1-main/m1-ui/common/c1-SuperInputText/SuperInputText";
@@ -15,7 +15,7 @@ type PropsType = {
     setPassword: (password: string) => void
     repeatPassword: string
     setRepeatPassword: (repeatPassword: string) => void
-    register: () => void
+    register: (e: FormEvent<HTMLFormElement>) => void
 }
 export const Registration = (props: PropsType) => {
     const {
@@ -48,19 +48,16 @@ export const Registration = (props: PropsType) => {
     return (
 
         <div className={style.block}>
+            <form onSubmit={register}>
             <div className={style.form}>
-                <p className={style.text}>Registration</p>
+                <div className={style.text}>Registration</div>
 
-                <label>
                     <SuperInputText
                         value={email}
                         onChange={emailHandler}
-                        className={`${s.testSpanError}${style.placeholder}`}
                         placeholder={'enter your email'}
                     />
-                </label>
 
-                <label>
                     <SuperInputText
                         type={'password'}
                         value={password}
@@ -68,9 +65,7 @@ export const Registration = (props: PropsType) => {
                         className={s.testSpanError}
                         placeholder={'enter  your password'}
                     />
-                </label>
 
-                <label>
                     <SuperInputText
                         type={'password'}
                         value={repeatPassword}
@@ -78,16 +73,16 @@ export const Registration = (props: PropsType) => {
                         className={s.testSpanError}
                         placeholder={'repeat  your password'}
                     />
-                </label>
+
 
                 {error !== null && <div className={style.error}>{error}</div>}
 
                 <div>
-                    <SuperButton onClick={register} className={s.superButton}>
-                        registration
-                    </SuperButton>
+                    <SuperButton children={'Registration'} className={s.superButton}/>
+
                 </div>
             </div>
+            </form>
         </div>
     );
 }

@@ -10,12 +10,14 @@
         height: 60px;
         margin-top: 10px;
         padding-left: 25px;
+        background-color: $primaryColor;
 
         div {
             width: 250px;
             display: flex;
             justify-content: center;
         }
+
     }
     .tableBody {
         border: 2px solid $primaryColor;
@@ -25,6 +27,7 @@
         align-items: center;
         justify-content: space-between;
         padding: 10px 0;
+        background-color: #ddd5dd;
 
         .bodyModel {
             display: flex;

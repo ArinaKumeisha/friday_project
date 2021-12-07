@@ -23,10 +23,10 @@ export const Login: React.FC<LoginPropsType> = (props) => {
     const changeLogin = (e: ChangeEvent<HTMLInputElement>) => {
         props.setEmail(e.currentTarget.value)
     }
-    const changePassword = (e:ChangeEvent<HTMLInputElement>) => {
+    const changePassword = (e: ChangeEvent<HTMLInputElement>) => {
         props.setPassword(e.currentTarget.value)
     }
-    const changeRemember = (e:ChangeEvent<HTMLInputElement>) => {
+    const changeRemember = (e: ChangeEvent<HTMLInputElement>) => {
         props.setRememberMe(e.currentTarget.checked)
     }
 
@@ -36,12 +36,32 @@ export const Login: React.FC<LoginPropsType> = (props) => {
             <form onSubmit={props.LoggedIn}>
                 <div className={s.border}>
                     <div className={s.text}>Sign In</div>
-                    <div><SuperInputText value={props.email} onChange={changeLogin}/></div>
-                    <div><SuperInputText type={"password"} value={props.password} onChange={changePassword}/></div>
+                    <SuperInputText
+                        value={props.email}
+                        onChange={changeLogin}/>
+
+                    <SuperInputText
+                        type={"password"}
+                        value={props.password}
+                        onChange={changePassword}/>
+
                     {error ? <span>{error}</span> : null}
-                    <div><SuperCheckbox checked={props.rememberMe} onChange={changeRemember} className={s.checkbox} children={'Remember Me'}/></div>
-                    <div><SuperButton children={'Login'} /></div>
-                    <NavLink to={'/passwordrecovery'}>Forgot password</NavLink>
+
+                    <SuperCheckbox
+                        checked={props.rememberMe}
+                        onChange={changeRemember}
+                        className={s.checkbox}
+                        children={'Remember Me'}/>
+
+                    <SuperButton
+                        children={'Login'}/>
+
+                    <NavLink to={'/passwordrecovery'}
+                    >Forgot password</NavLink>
+
+                    <NavLink to={'/registration'}>
+                        Create an account
+                    </NavLink>
                 </div>
             </form>
         </div>

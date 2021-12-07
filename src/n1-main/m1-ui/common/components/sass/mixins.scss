@@ -1,0 +1,8 @@
+@import "variables";
+@mixin form($colorForm,$minHeight,$minWidth ){
+  background-color: $colorForm;
+  min-height: $minHeight;
+  min-width: $minWidth;
+  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+  border-radius: 50px;
+}

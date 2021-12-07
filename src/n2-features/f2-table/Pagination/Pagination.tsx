@@ -4,6 +4,7 @@ import {AppStoreType} from "../../../n1-main/m2-bll/store";
 import style from './Pagination.module.scss'
 import {getCardsPackTC, setCurrentPageAC} from "../../../n1-main/m2-bll/cardsPack-reducer";
 import SuperButton from '../../../n1-main/m1-ui/common/c2-SuperButton/SuperButton';
+import Select from "../Select/Select";
 
 const Pagination = () => {
     const dispatch = useDispatch()
@@ -30,12 +31,15 @@ const Pagination = () => {
     const correctValue = pages.filter((p) => p ? p >= leftNumber && p <= rightNumber : '')
 
     return (
-        <div className={style.pagination}> {portion > 1 &&
-        <SuperButton onClick={() => {
-            setPortion(portion - 1)
-        }} className={style.btn}>Prev
-        </SuperButton>
-        }
+        <div className={style.pagination}>
+            <Select count={pageCount}/>
+            {portion > 1 &&
+            <SuperButton onClick={() => {
+                setPortion(portion - 1)
+            }} className={style.btn}>
+                Prev
+            </SuperButton>
+            }
             {correctValue.map(p => {
                 return (
                     <span
@@ -46,7 +50,8 @@ const Pagination = () => {
                 )
 
             })}
-            {portionCount > portion && <SuperButton onClick={() => {
+            {portionCount > portion &&
+            <SuperButton onClick={() => {
                 setPortion(portion + 1)
             }} className={style.btn}>Next
             </SuperButton>}

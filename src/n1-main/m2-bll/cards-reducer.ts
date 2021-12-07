@@ -49,10 +49,13 @@ export const setCardsGradeAC = (card_id: string, grade: number) =>
 
 export const setCardsAC = (cards: Array<CardType>) =>
     ({type: 'CARDS/SET-CARDS', cards} as const)
+
 export const setCurrentPageCardsAC = (page: number) =>
     ({type: 'CARDS/SET-CURRENT-PAGE-CARDS', page} as const)
+
 export const setTotalCountCardsAC = (cardsTotalCount: number) =>
     ({type: 'CARDS/SET-TOTAL-COUNT-CARDS', cardsTotalCount,} as const)
+
 export const setPageCountCardsAC = (pageCount: number) =>
     ({type: 'CARDS/SET-PAGE-COUNT-CARDS', pageCount,} as const)
 

@@ -2,6 +2,7 @@ import {Dispatch} from "react";
 import {AppStoreType} from "./store";
 import {ThunkAction} from "redux-thunk";
 import {cardsPackApi, CardsPackType} from "./api/cardsPack-api";
+import {setPageCountCardsAC} from "./cards-reducer";
 
 
  export type SortPackType = '0name' | '1name' | '0cardsCount' | '1cardsCount' | '0updated'| '1updated'| null
@@ -27,7 +28,7 @@ export const cardsPackReducer = (state = initialState, action: ActionType): Init
             return {...state, page: action.page}
         case "TABLE/SET-TOTAL-COUNT":
             return {...state, cardPacksTotalCount: action.cardPacksTotalCount}
-        case "TABLE/SET-PAGE-COUNT":
+        case "CARDS/SET-PAGE-COUNT-CARDS":
             return {...state, pageCount: action.pageCount}
         case "TABLE/SET-USER-ID-AFTER-RADIO":
             return {...state, userIdAfterRadio: action.userIdAfterRadio}
@@ -69,8 +70,10 @@ export const setCurrentPageAC = (page: number) =>
 export const setTotalCountAC = (cardPacksTotalCount: number) =>
     ({type: 'TABLE/SET-TOTAL-COUNT', cardPacksTotalCount,} as const)
 
+/*
 export const setPageCountAC = (pageCount: number) =>
     ({type: 'TABLE/SET-PAGE-COUNT', pageCount,} as const)
+*/
 
 export const setUserIdAfterRadioAC = (userIdAfterRadio: string) =>
     ({type: 'TABLE/SET-USER-ID-AFTER-RADIO', userIdAfterRadio} as const)
@@ -152,7 +155,7 @@ type ActionType =
     | ReturnType<typeof setCardPacksAC>
     | ReturnType<typeof setCurrentPageAC>
     | ReturnType<typeof setTotalCountAC>
-    | ReturnType<typeof setPageCountAC>
+    | ReturnType<typeof setPageCountCardsAC>
     | ReturnType<typeof setUserIdAfterRadioAC>
     | ReturnType<typeof setSearchPackNameAC>
     | ReturnType<typeof sortPacksAC>

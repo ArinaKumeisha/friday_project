@@ -20,11 +20,16 @@ export const LoginContainer: React.FC = () => {
         dispatch(LoginTC(email, password, rememberMe));
         setEmail('');
         setPassword('');
-
     }
     if (isLoggedIn) {
         return <Redirect to='/profile'/>
     }
-    return <Login email={email} password={password} rememberMe={rememberMe}
-                  setEmail={setEmail} setPassword={setPassword} setRememberMe={setRememberMe} LoggedIn={LoggedIn}/>
+    return <Login
+        email={email}
+        password={password}
+        rememberMe={rememberMe}
+        setEmail={setEmail}
+        setPassword={setPassword}
+        setRememberMe={setRememberMe}
+        LoggedIn={LoggedIn}/>
 }

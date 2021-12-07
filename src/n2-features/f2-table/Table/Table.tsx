@@ -5,7 +5,6 @@ import {useDispatch, useSelector} from "react-redux";
 import {
     getCardsPackTC,
     setCardsCountAC,
-    setPageCountAC,
     setSearchPackNameAC,
     setUserIdAfterRadioAC, SortPackType
 } from "../../../n1-main/m2-bll/cardsPack-reducer";
@@ -60,10 +59,10 @@ export const Table = () => {
 
     }, [profileOrPublic, pageCount, page,sortPacks, debouncedSearchTerm, debouncedRange[0], debouncedRange[1]])
 
-    const setPageCountHandler = (e: ChangeEvent<HTMLInputElement>) => {
+   /* const setPageCountHandler = (e: ChangeEvent<HTMLInputElement>) => {
         if (Number(e.currentTarget.value) < 1) e.currentTarget.value = '1'
         dispatch(setPageCountAC(Number(e.currentTarget.value)))
-    }
+    }*/
     const delCardsPackHandler = (cardPackId: string) => {
         dispatch(showModalDelCardsPackAC())
         dispatch(setActiveCardPackAC(cardPackId))
@@ -123,7 +122,7 @@ export const Table = () => {
                 values={values}
                 setValues={setValues}/>
 
-            <Settings setPageCountHandler={setPageCountHandler}
+            <Settings
                       superRadioArr={superRadioArr}
                       profileOrPublic={profileOrPublic}
                       onChangeProfileOrPublic={onChangeProfileOrPublic}

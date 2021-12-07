@@ -36,7 +36,7 @@ const CardsPagination = (props: PropsType) => {
 
     return (
         <div className={style.pagination}>
-           <Select pageCountCards={pageCountCards}/>
+           <Select count={pageCountCards}/>
 
             {portion > 1 &&
         <SuperButton onClick={() => {

@@ -26,10 +26,9 @@ export const File = () => {
     }
 
     const send = () => {
-        dispatch(updateAuthTC('./file', fileURL))
+        dispatch(updateAuthTC('./file', file64))
         setChange(false)
     }
-   /* "homepage": "https://brightwiths.github.io/iti_bright_cards",*/
 
     return (
         <>
